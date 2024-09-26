@@ -1,0 +1,125 @@
+server.port: 8080
+
+# 微信小程序api配置
+wx:
+  enable: false
+  app-id: '微信小程序app-id'
+  app-secret: '你的微信小程序api密钥'
+
+# springdoc-openapi项目配置
+springdoc:
+  # 将对象参数转为 k-v 模式
+  default-flat-param-object: true
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  info:
+    # 标题
+    title: 'agent4j 接口文档'
+    # 描述
+    description: '生态旅游AI小程序后端, 具体包括后端web模块, 爬虫模块'
+    # 版本
+    version: 'V1.0.0'
+    # 作者信息
+    contact:
+      name: InwardFlow
+      email: admin@2wxk.com
+      url: https://github.com/inwardflow
+  # 这里定义了两个分组，可定义多个，也可以不定义
+  group-configs:
+    - group: 小程序模块
+      packages-to-scan: net.heimeng.web
+
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+# DataSource Config
+spring:
+  devtools:
+    add-properties: false
+  #  jackson:
+#    property-naming-strategy: SNAKE_CASE
+  datasource:
+    # jdbc 所有参数配置参考 https://lionli.blog.csdn.net/article/details/122018562
+    # rewriteBatchedStatements=true 批处理优化 大幅提升批量插入更新删除性能(对数据库有性能损耗 使用批量操作应考虑性能问题)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/agent4j?useUnicode=true&characterEncoding=utf-8&rewriteBatchedStatements=true&max_allowed_packet=1073741824&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    username:
+    password:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      timeout: 1s
+      database: 0
+
+# Logger Config
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    web: 'DEBUG'
+
+mybatis-plus:
+  configuration:
+    # MyBatis 配置
+    map-underscore-to-camel-case: true
+  global-config:
+    # 全局配置
+    db-config:
+      # 数据库配置
+      id-type: auto
+
+# security配置
+security:
+  # 排除路径
+  excludes:
+    # 静态资源
+    - /*.html
+    - /**/*.html
+    - /**/*.css
+    - /**/*.js
+    # 公共路径
+    - /favicon.ico
+    - /error
+    # swagger 文档配置
+    - /*/api-docs
+    - /*/api-docs/**
+    # actuator 监控配置
+    - /actuator
+    - /actuator/**
+
+# Sa-Token 配置 (文档: https://sa-token.cc)
+sa-token:
+  # token 名称（同时也是 cookie 名称）
+  token-name: Authorization
+  # token 有效期（单位：秒） 默认30天，-1 代表永久有效
+  timeout: 2592000
+  # token 最低活跃频率（单位：秒），如果 token 超过此时间没有访问系统就会被冻结，默认-1 代表不限制，永不冻结
+  active-timeout: -1
+  # 是否允许同一账号多地同时登录 （为 true 时允许一起登录, 为 false 时新登录挤掉旧登录）
+  is-concurrent: true
+  # 在多人登录同一账号时，是否共用一个 token （为 true 时所有登录共用一个 token, 为 false 时每次登录新建一个 token）
+  is-share: true
+  # token 风格（默认可取值：uuid、simple-uuid、random-32、random-64、random-128、tik）
+  token-style: simple-uuid
+  # 是否输出操作日志
+  is-log: false
+  # jwt 秘钥
+  jwt-secret-key: abcdefghijklecopqrstourxyz
+  # 允许动态设置 token 有效期
+  dynamic-active-timeout: true
+  # 允许从 请求参数 读取 token
+  is-read-body: true
+  # 允许从 header 读取 token
+  is-read-header: true
+  # 关闭 cookie 鉴权 从根源杜绝 csrf 漏洞风险
+  is-read-cookie: false
+  # token前缀
+  token-prefix: "Bearer"

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>${revision}</version>
+
+    <parent>
+        <groupId>net.heimeng</groupId>
+        <artifactId>agent4j-backend</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>agent4j-common</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        common 通用模块
+    </description>
+
+    <modules>
+        <module>agent4j-common-bom</module>
+        <module>agent4j-common-doc</module>
+        <module>agent4j-common-core</module>
+        <module>agent4j-common-satoken</module>
+        <module>agent4j-common-jedis</module>
+        <module>agent4j-common-wxapi</module>
+    </modules>
+
+<!--    <properties>-->
+<!--        <maven.compiler.source>17</maven.compiler.source>-->
+<!--        <maven.compiler.target>17</maven.compiler.target>-->
+<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--    </properties>-->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

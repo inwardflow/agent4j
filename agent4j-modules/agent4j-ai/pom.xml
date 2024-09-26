@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.heimeng</groupId>
+        <artifactId>agent4j-modules</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>agent4j-ai</artifactId>
+
+    <description>
+        用于接入大语言模型
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.heimeng</groupId>
+            <artifactId>agent4j-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.heimeng</groupId>
+            <artifactId>agent4j-common-jedis</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Spring AI -->
+        <dependency>
+            <groupId>group.springframework.ai</groupId>
+            <artifactId>spring-ai-bom</artifactId>
+            <version>${spring-ai.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>group.springframework.ai</groupId>
+            <artifactId>spring-ai-zhipuai</artifactId>
+        </dependency>
+
+
+    </dependencies>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>

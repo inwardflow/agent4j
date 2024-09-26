@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+
+    <servers>
+        <server>
+            <id>public</id>
+            <username>admin</username>
+            <password>Qaz=951@.0</password>
+        </server>
+        <server>
+            <id>releases</id>
+            <username>admin</username>
+            <password>Qaz=951@.0</password>
+        </server>
+        <server>
+            <id>snapshots</id>
+            <username>admin</username>
+            <password>Qaz=951@.0</password>
+        </server>
+    </servers>
+    <mirrors>
+        <mirror>
+            <id>alimaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>aliyun maven</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </mirror>
+    </mirrors>
+
+</settings>
