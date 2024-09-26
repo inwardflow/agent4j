@@ -62,14 +62,13 @@ public class AiUnitTest {
                 .entity(new ParameterizedTypeReference<List<ActorFilms>>() {});
         log.debug(actorFilms.toString());
     }
-
+    @Data
+    private static class Person {
+        // 私有属性
+        private String name;
+        private int age;
+        private String address;
+        private List<String> occupations;
+    }
 }
 
-@Data
-class Person {
-    // 私有属性
-    private String name;
-    private int age;
-    private String address;
-    private List<String> occupations;
-}
